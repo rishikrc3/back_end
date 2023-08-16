@@ -11,7 +11,8 @@ function calculateSum(counter) {
   return sum;
 }
 function handleRequest(req, res) {
-  var counter = req.query.counter;
+  console.log(req.headers);
+  var counter = req.headers.counter;
   var calculatedSum = calculateSum(counter);
   var ans = "The sum is " + calculatedSum;
   res.send(ans);
@@ -19,8 +20,8 @@ function handleRequest(req, res) {
 function handleSecondRequest(req, res) {
   console.log("Hello World");
 }
-app.get("/handleSum", handleRequest);
-app.get("/handleSum2", handleSecondRequest);
+app.post("/handleSum", handleRequest);
+
 function started() {
   console.log(`Example app listening on port ${port}`);
 }
