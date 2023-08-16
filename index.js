@@ -3,6 +3,14 @@ const fs = require("fs");
 const express = require("express");
 const app = express();
 const port = 3000;
+
+function middleware1(req, res, next) {
+  console.log("From inside the middleware " + req.headers.counter);
+  console.log("Error from inside the middleware");
+  next();
+}
+
+app.use(middleware1);
 function calculateSum(counter) {
   var sum = 0;
   for (var i = 0; i <= counter; i++) {
