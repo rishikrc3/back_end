@@ -22,15 +22,13 @@ function calculateSum(counter) {
   return sum;
 }
 function handleRequest(req, res) {
-  console.log(req.body);
   var counter = req.body.counter;
-  if (counter < 100000) {
-    var calculatedSum = calculateSum(counter);
-    var ans = "The sum is " + calculatedSum;
-    res.send(ans);
-  } else {
-    res.status(411).send("You have sent a very big number");
-  }
+  var calculatedSum = calculateSum(counter);
+  var answerObject = {
+    sum: calculatedSum,
+  };
+
+  res.status(200).send(answerObject);
 }
 function handleSecondRequest(req, res) {
   console.log("Hello World");
