@@ -30,7 +30,7 @@ function calculateMul(counter) {
   return answer;
 }
 function handleRequest(req, res) {
-  var counter = req.body.counter;
+  var counter = req.query.counter;
   var calculatedSum = calculateSum(counter);
   var calculatedMul = calculateMul(counter);
   var answerObject = {
@@ -59,7 +59,7 @@ function givePage(req, res) {
 }
 
 app.get("/", givePage);
-app.post("/handleSum", handleRequest);
+app.get("/handleSum", handleRequest);
 
 function started() {
   console.log(`Example app listening on port ${port}`);
