@@ -43,6 +43,22 @@ function handleRequest(req, res) {
 function handleSecondRequest(req, res) {
   console.log("Hello World");
 }
+
+function givePage(req, res) {
+  res.send(`<!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Hello Page</title>
+  </head>
+  <body>
+      <b>Hemlo There</b>
+  </body>
+  </html>`);
+}
+
+app.get("/", givePage);
 app.post("/handleSum", handleRequest);
 
 function started() {
