@@ -5,13 +5,14 @@ const app = express();
 const port = 3000;
 function calculateSum(counter) {
   var sum = 0;
-  for (var i = 0; i < counter; i++) {
+  for (var i = 0; i <= counter; i++) {
     sum += i;
   }
   return sum;
 }
 function handleRequest(req, res) {
-  var calculatedSum = calculateSum(100);
+  var counter = req.query.counter;
+  var calculatedSum = calculateSum(counter);
   var ans = "The sum is " + calculatedSum;
   res.send(ans);
 }
