@@ -16,7 +16,11 @@ function handleRequest(req, res) {
   var ans = "The sum is " + calculatedSum;
   res.send(ans);
 }
-app.get("/", handleRequest);
+function handleSecondRequest(req, res) {
+  console.log("Hello World");
+}
+app.get("/handleSum", handleRequest);
+app.get("/handleSum2", handleSecondRequest);
 function started() {
   console.log(`Example app listening on port ${port}`);
 }
