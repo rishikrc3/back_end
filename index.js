@@ -3,9 +3,17 @@ const fs = require("fs");
 const express = require("express");
 const app = express();
 const port = 3000;
-
+function calculateSum(counter) {
+  var sum = 0;
+  for (var i = 0; i < counter; i++) {
+    sum += i;
+  }
+  return sum;
+}
 function handleRequest(req, res) {
-  res.send("Hello World!");
+  var calculatedSum = calculateSum(100);
+  var ans = "The sum is " + calculatedSum;
+  res.send(ans);
 }
 app.get("/", handleRequest);
 function started() {
@@ -16,14 +24,3 @@ app.listen(port, started);
 function callbackFn(err, data) {
   console.log(data);
 }
-fs.readFile("a.txt", "utf-8", callbackFn);
-function calculateSum(counter) {
-  var sum = 0;
-  for (var i = 0; i < counter; i++) {
-    sum += i;
-  }
-  return sum;
-}
-
-var calculatedSum = calculateSum(100);
-console.log(calculatedSum);
